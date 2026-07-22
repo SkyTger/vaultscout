@@ -1,12 +1,12 @@
 [project]
 name = "vaultscout"
 version = "0.1.0"
-description = "Add your description here"
+description = "Semantic search over your Obsidian vault, fully local"
 readme = "README.md"
 authors = [
     { name = "SkyTger", email = "nickolay.zeynalov@gmail.com" }
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = []
 
 [project.scripts]
