@@ -1,0 +1,17 @@
+[project]
+name = "vaultscout"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "SkyTger", email = "nickolay.zeynalov@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+vaultscout = "vaultscout:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
