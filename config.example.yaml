@@ -1,0 +1,19 @@
+# vaultscout — пример конфигурации.
+# Скопируйте в config.yaml и подставьте свои значения.
+# config.yaml в git не попадает (см. .gitignore).
+
+vault:
+  # Абсолютный путь к вашей базе Obsidian
+  path: /path/to/your/obsidian/vault
+
+embeddings:
+  # Локальная модель эмбеддингов (HuggingFace id).
+  # Модель — параметр: можно заменить и сравнить качество на своём наборе вопросов.
+  model: deepvk/USER-bge-m3
+
+database:
+  host: localhost
+  port: 5432
+  name: vaultscout
+  user: vaultscout
+  # Пароль задаётся через переменную окружения VAULTSCOUT_DB_PASSWORD

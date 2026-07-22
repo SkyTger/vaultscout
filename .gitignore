@@ -1,0 +1,24 @@
+# Локальная конфигурация — пути и настройки пользователя
+config.yaml
+
+# Локальные рабочие материалы — не для публичного репозитория
+local/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Инструменты
+.idea/
+.vscode/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Окружение
+.env
