@@ -1,0 +1,13 @@
+services:
+  db:
+    image: pgvector/pgvector:pg18
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_DB: vaultscout
+      POSTGRES_USER: vaultscout
+      POSTGRES_PASSWORD: ${VAULTSCOUT_DB_PASSWORD:? не задан пароль - проверь .env}
+    volumes:
+      - db_data:/var/lib/postgresql
+volumes:
+  db_data:
