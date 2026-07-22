@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_DB: vaultscout
       POSTGRES_USER: vaultscout
-      POSTGRES_PASSWORD: ${VAULTSCOUT_DB_PASSWORD:? не задана пароль - проверь .env}
+      POSTGRES_PASSWORD: ${VAULTSCOUT_DB_PASSWORD:? не задан пароль - проверь .env}
     volumes:
       - db_data:/var/lib/postgresql
 volumes:
