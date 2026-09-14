@@ -3,7 +3,6 @@ import os
 import yaml
 from dotenv import load_dotenv
 from pydantic import BaseModel, SecretStr
-from yaml.representer import YAMLError
 
 
 class VaultConfig(BaseModel):
