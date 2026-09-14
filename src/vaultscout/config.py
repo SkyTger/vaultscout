@@ -3,6 +3,7 @@ import os
 import yaml
 from dotenv import load_dotenv
 from pydantic import BaseModel, SecretStr
+from yaml.representer import YAMLError
 
 
 class VaultConfig(BaseModel):
@@ -36,9 +37,21 @@ def load_config(path: str) -> Config:
     password = os.environ.get("VAULTSCOUT_DB_PASSWORD")
     if not password:
         raise ConfigError(
-            "не задана переменная VAULTSCOUT_DB_PASSWORD — добавьте её в .env"
+            "не задана переменная VAULTSCOUT_DB_PASSWORD - добавьте её в .env"
         )
-    with open(path) as file:
-        data = yaml.safe_load(file)
-        data.setdefault("database", {})["password"] = password
-        return Config.model_validate(data)
+
+    try:
+        with open(path, encoding="utf-8") as file:
+            data = yaml.safe_load(file)
+    except yaml.YAMLError as e:
+        raise ConfigError(f"{path} - некорректный YAML: {e}") from e
+
+    if not isinstance(data, dict):
+        raise ConfigError(f"{path}: ожидался набор секций vault, embeddings, database")
+
+    database = data.setdefault("database", {})
+    if not isinstance(database, dict):
+        raise ConfigError(f"{path}: секция database должна быть набором полей")
+    database["password"] = password
+
+    return Config.model_validate(data)
